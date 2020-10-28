@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan Ly San Pham</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{{url_for('static', filename = 'css/style.css')}} " rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Quan Ly San Pham</h1>
+        <table class="table">
+            <tr>
+                <th>Images</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            {% for p in products %}
+            <tr>
+                <td>
+                    <img src="{{url_for('static', filename=p.image)}}" alt="{{p.name}}" width="120"/>
+                </td>
+                <td>{{ p.id }}</td>
+                <td>
+                    <a href="#">{{ p.name }}</a>
+                </td>
+                <td>{{ p.description }}</td>
+                <td>{{"{:,.1f}".format(p.price)}} VND</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
